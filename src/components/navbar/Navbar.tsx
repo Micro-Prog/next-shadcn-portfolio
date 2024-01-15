@@ -1,5 +1,7 @@
+"use client";
 import Link from 'next/link'
 import React from 'react'
+import { usePathname } from 'next/navigation';
 
 // framer motion
 import { motion } from 'framer-motion';
@@ -19,6 +21,9 @@ const Links: { link: string, info: string }[] = [
 
 
 function Navbar({ NavStyle, linkStyle, underlineStyle }: NavbarInterface) {
+  
+  const path = usePathname();
+  
   return (
     <nav
       className={`${NavStyle}`}
@@ -26,16 +31,34 @@ function Navbar({ NavStyle, linkStyle, underlineStyle }: NavbarInterface) {
       {
         Links.map((item, index) => {
           return (
-            <>
+            <div key={index}>
               <Link 
                 href={item.link} 
                 key={index} 
-                className={`capitalize ${linkStyle} ${underlineStyle}`}
+                className={`capitalize ${linkStyle}`}
                 >
+                {
+                  item.link === path && (
+                    <motion.span 
+                    initial={{ y: '-100%' }}
+                    animate={{ y: 0 }}
+                    transition={{ type: 'tween' }}
+                    layoutId='underline'
+                    className={`${underlineStyle}`}
+                  />
+                    // <motion.span 
+                    //   initial={{ y: '-100%' }}
+                    //   animate={{ y: 0 }}
+                    //   transition={{ type: 'tween' }}
+                    //   layoutId='underline'
+                    //   className={`${underlineStyle}`}
+                    // />
+                  ) 
+                }
                   
                   {item.info}
               </Link>
-            </>
+            </div>
           )
         })
       }
