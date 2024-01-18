@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 // hero
 import Hero from '@/components/hero/Hero'
+import About from '@/components/about/About'
 
 
 
@@ -9,7 +10,11 @@ export default function Home() {
   return (
     <main className="">
 
+      {/* hero */}
       <Hero />
+      
+      {/* about */}
+      <About />
 
     </main>
   )

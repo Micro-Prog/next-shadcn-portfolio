@@ -2,12 +2,12 @@ import React from 'react'
 import Image from 'next/image';
 
 
-interface HeroIMGInterface {
+interface MainIMGInterface {
   containerStyles?: string | undefined,
   imgSrc: string,
 }
 
-const HeroIMG = ({ containerStyles, imgSrc } : HeroIMGInterface) => {
+const MainIMG = ({ containerStyles, imgSrc } : MainIMGInterface) => {
   return (
     <div className={`${containerStyles}`}>
       <Image src={imgSrc} fill priority alt='developer-image'/>
@@ -15,4 +15,4 @@ const HeroIMG = ({ containerStyles, imgSrc } : HeroIMGInterface) => {
   )
 }
 
-export default HeroIMG;
+export default MainIMG;

@@ -10,7 +10,7 @@ import {
 } from 'react-icons/ri';
 
 // hero developer IMG
-import HeroIMG from '../hero_img/HeroIMG';
+import HeroIMG from '../main_img/MainIMG';
 
 // badge
 import Badge from '../badge/Badge';
@@ -29,7 +29,7 @@ const Hero = () => {
         <div className="flex justify-between gap-x-8 text-black dark:text-white">
 
           {/* text */}
-          <div className="flex max-w-[600px] flex-col justify-center mx-auto md:mx-0 text-center md:text-left z-30">
+          <div className="flex max-w-[600px] flex-col justify-center mx-auto md:mx-0 text-center md:text-left z-20">
             <div className="text-sm uppercase font-semibold mb-4 text-primary tracking-[8px]">Web Developer</div>
             <h1 className="h1">Hello, My Name is Daniel.</h1>
             <p className="capitalize subtext max-w-[600px] md:mx-0">Brief Description, Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis expedita velit voluptatum doloremque.</p>
@@ -62,7 +62,31 @@ const Hero = () => {
           <div className="hidden lg:flex relative">
 
             {/* badge one */}
-            <Badge />
+            <Badge
+              badgeStyles='absolute top-[0%] -left-[5rem]'
+              icon={<RiBriefcase4Fill />} 
+              endNumber={5}  
+              endCountText='+'
+              badgeInfo='Years of Experience'
+            />
+
+            {/* badge two */}
+            <Badge
+              badgeStyles='absolute top-[70%] right-[24rem]'
+              icon={<RiTodoFill />} 
+              endNumber={50}  
+              endCountText='k'
+              badgeInfo='Successfull Projects'
+            />
+
+            {/* badge three */}
+            <Badge
+              badgeStyles='absolute top-[40%] -right-[2rem]'
+              icon={<RiTodoFill />} 
+              endNumber={2}  
+              endCountText='k'
+              badgeInfo='Happy Customers'
+            />
 
             <div className="bg-hero_shape_2_light dark:bg-hero_shape_2_dark w-[500px] h-[500px] bg-no-repeat absolute -top-0 -right-0"></div>
 
