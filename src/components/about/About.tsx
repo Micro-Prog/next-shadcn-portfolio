@@ -152,16 +152,70 @@ const About = () => {
 
   return (
     <section className="md:h-[860px] pb-12 md:py-24">
-      <div className="container mx-auto">
+      <div className="container">
         <h2 className="section-title mt-16 md:mt-24 mb-8 md:mb-16 text-center mx-auto">About Me</h2>
-      </div>
-      <div>
+          <div className="flex flex-col items-center justify-center md:flex-row md:items-start lg:justify-between">
 
-        {/* image */}
-        <MainIMG
-          containerStyles='bg-about_shape_light dark:bg-about_shape_dark w-[510px] h-[510px] scale-[75%] bg-no-repeat relative' 
-          imgSrc='/about/developer.png'
-          />
+            {/* image */}
+            <div className="hidden md:flex relative">
+              <MainIMG
+                containerStyles='bg-about_shape_light dark:bg-about_shape_dark w-[400px] h-[400px] scale-[75%] lg:scale-[75%] bg-no-repeat relative' 
+                imgSrc='/about/developer.png'
+              />
+            </div>
+
+            {/* tabs */}
+            <div className="flex">
+              <Tabs defaultValue="personal">
+                <TabsList className=" grid lg:grid-cols-3 xl:max-w-[320px] xl:border dark:border-none">
+                  <TabsTrigger className="w-[162px] " value="personal">Info</TabsTrigger>
+                  <TabsTrigger className="w-[162px] " value="qualifications">Qualifications</TabsTrigger>
+                  <TabsTrigger className="w-[162px] " value="skills">Skills</TabsTrigger>
+                </TabsList>
+
+                {/* tabs content */}
+                <div className="text-lg mt-24 md:mt-24">
+                
+                  {/* personal tab content */}
+                  <TabsContent value="personal">
+                    <div className="text-center md:text-left">
+                      <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
+                      <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
+
+                      {/* icons */}
+                      <div className="grid xl:grid-cols-2 gap-4 mb-12">
+                        {
+                          infoData.map((item, index: number) => {
+                            return (
+                              <div 
+                              className="flex items-center gap-x-4 mx-auto xl:mx-0"
+                              key={index}>
+                                <div className="text-primary">{item.icon}</div>
+                                <div>{item.text}</div>
+                              </div>
+                            )
+                          })
+                        }
+                      </div>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="qualifications">
+                  <div className="text-center md:text-left">
+                      <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
+                      <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="skills">
+                  <div className="text-center md:text-left">
+                      <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
+                      <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
+            </div>
+
+          </div>
       </div>
     </section>
   )

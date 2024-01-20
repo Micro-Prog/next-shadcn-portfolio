@@ -10,7 +10,7 @@ interface MainIMGInterface {
 const MainIMG = ({ containerStyles, imgSrc } : MainIMGInterface) => {
   return (
     <div className={`${containerStyles}`}>
-      <Image src={imgSrc} fill priority alt='developer-image'/>
+      <Image className='object-fill' src={imgSrc} width={320} height={320} priority alt='developer-image'/>
     </div>
   )
 }

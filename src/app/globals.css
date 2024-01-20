@@ -70,6 +70,14 @@
   @apply text-4xl xl:text-[72px] xl:leading-[80px] tracking-[-2px] font-bold;
 }
 
+.h3 {
+  @apply text-xl font-bold;
+}
+
+.h4 {
+  @apply text-[12px];
+}
+
 .subtext {
   @apply text-muted-foreground text-lg mb-8 font-light;
 }
