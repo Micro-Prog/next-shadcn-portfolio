@@ -71,17 +71,17 @@ const qualificationsData = [
     data: [
       {
         company: 'AAA Company',
-        qualification: 'Computer Engineer',
+        role: 'Computer Engineer',
         year: '2018 - 2020'
       },
       {
         company: 'BBB Company',
-        qualification: 'Software Tester',
+        role: 'Software Tester',
         year: '2020 - 2021'
       },
       {
         company: 'CCC Company',
-        qualification: 'Software Engineer',
+        role: 'Software Engineer',
         year: '2021 - 2022'
       },
     ],
@@ -142,6 +142,13 @@ interface QualificationsDataInterface {
 }
 
 
+interface QualificationsItemInterface {
+  company: string, 
+  role: string, 
+  year: string
+} 
+
+
 const About = () => {
 
   const findData = (arr: QualificationsDataInterface, title: string): { title: string, data: Array<Object>} => {
@@ -167,14 +174,14 @@ const About = () => {
             {/* tabs */}
             <div className="flex">
               <Tabs defaultValue="personal">
-                <TabsList className=" grid lg:grid-cols-3 xl:max-w-[320px] xl:border dark:border-none">
-                  <TabsTrigger className="w-[162px] " value="personal">Info</TabsTrigger>
-                  <TabsTrigger className="w-[162px] " value="qualifications">Qualifications</TabsTrigger>
-                  <TabsTrigger className="w-[162px] " value="skills">Skills</TabsTrigger>
+                <TabsList className="grid lg:grid-cols-3 xl:max-w-[480px] xl:border dark:border-none">
+                  <TabsTrigger className="w-[162px]" value="personal">Info</TabsTrigger>
+                  <TabsTrigger className="w-[162px]" value="qualifications">Qualifications</TabsTrigger>
+                  <TabsTrigger className="w-[162px]" value="skills">Skills</TabsTrigger>
                 </TabsList>
 
                 {/* tabs content */}
-                <div className="text-lg mt-24 md:mt-24">
+                <div className="text-lg mt-12 md:mt-12">
                 
                   {/* personal tab content */}
                   <TabsContent value="personal">
@@ -183,7 +190,7 @@ const About = () => {
                       <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
 
                       {/* icons */}
-                      <div className="grid xl:grid-cols-2 gap-4 mb-12">
+                      <div className="grid xl:grid-cols-2 gap-4 mb-4">
                         {
                           infoData.map((item, index: number) => {
                             return (
@@ -197,13 +204,96 @@ const About = () => {
                           })
                         }
                       </div>
+
+                      {/* language skills */}
+                      <div className="flex flex-col gap-y-1">
+                        <div className="text-primary">Language Skills</div>
+                        <div className="border-b border-border"></div>
+                        <div className="">English, French, Spanish, Italian</div>
+                      </div>
+
                     </div>
                   </TabsContent>
+
+                  {/* qualifications tab content */}
                   <TabsContent value="qualifications">
-                  <div className="text-center md:text-left">
-                      <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
-                      <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
+                  <div className="">
+                    <h3 className="h3 mt-0 mb-3 text-center md:text-left">My Qualifications</h3>
+                      <div className="grid lg:grid-cols-2 gap-y-8">
+
+                        {/* experience */}
+                        <div className="flex flex-col gap-y-6">
+                          <div className="flex gap-x-2 items-center text-[20px] text-primary">
+                            <Briefcase size={22} />
+                            <h4 className="capitalize font-medium">
+                              {
+                                findData(qualificationsData, 'experience').title
+                              }
+                            </h4>
+                          </div>
+
+                          {/* list */}
+                          <div>
+                            {
+                              findData(qualificationsData, 'experience').data.map((item: any , index: number) => {
+                                return (
+                                  <div 
+                                    key={index}
+                                    className="flex p-2 gap-x-4 group bg-blue-600"
+                                  >
+
+                                    <div className="h-[84px] w-[2px] bg-border relative ml-2">
+                                      <div className="w-[11px] h-[11px] rounded-full bg-primary absolute -left-[5px] bottom-0 group-hover:-translate-y-[42px] transition-all duration-700"></div>
+                                    </div>
+
+                                      <div className="font-semibold text-sm leading-none mb-2">{item.company}</div>
+                                      <div className="text-sm leading-none text-muted-foreground mb-4">{item.role}</div>
+                                      <div className="text-sm font-medium">{item.year}</div>
+                                  </div>
+                                      );
+                                  }
+                              )
+                              }
+                          </div>
+                        </div>
+                        
+                        {/* education */}
+                        <div className="flex flex-col gap-y-6">
+                          <div className="flex gap-x-2 items-center text-[20px] text-primary">
+                            <GraduationCap size={22} />
+                            <h4 className="capitalize font-medium">
+                              {
+                                findData(qualificationsData, 'education').title
+                              }
+                            </h4>
+                          </div>
+
+                          {/* list */}
+                          <div>
+                            {
+                              findData(qualificationsData, 'education').data.map((item: any , index: number) => {
+                                return (
+                                  <div 
+                                    key={index}
+                                    className="flex p-2 gap-x-4 group bg-blue-600"
+                                  >
+
+                                    <div className="h-[84px] w-[2px] bg-border relative ml-2">
+                                      <div className="w-[11px] h-[11px] rounded-full bg-primary absolute -left-[5px] group-hover:translate-y-[42px] transition-all duration-700"></div>
+                                    </div>
+
+                                      <div className="font-semibold text-sm leading-none mb-2">{item.university}</div>
+                                      <div className="text-sm leading-none text-muted-foreground mb-4">{item.certification}</div>
+                                      <div className="text-sm font-medium">{item.year}</div>
+                                  </div>
+                                      );
+                                  }
+                              )
+                              }
+                          </div>
+                        </div>
                     </div>
+                  </div>
                   </TabsContent>
                   <TabsContent value="skills">
                   <div className="text-center md:text-left">
