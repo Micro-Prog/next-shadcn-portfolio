@@ -117,9 +117,6 @@ const skillsData = [
         image: '/about/figma.svg'
       },
       {
-        image: '/about/notion.svg'
-      },
-      {
         image: '/about/wordpress.svg'
       }
     ],
@@ -158,7 +155,7 @@ const About = () => {
 
 
   return (
-    <section className="md:h-[860px] pb-12 md:py-24">
+    <section className="md:h-[960px] pb-12 md:py-4 mt-36">
       <div className="container">
         <h2 className="section-title mt-16 md:mt-24 mb-8 md:mb-16 text-center mx-auto">About Me</h2>
           <div className="flex flex-col items-center justify-center md:flex-row md:items-start lg:justify-between">
@@ -189,27 +186,29 @@ const About = () => {
                       <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
                       <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
 
-                      {/* icons */}
-                      <div className="grid xl:grid-cols-2 gap-4 mb-4">
-                        {
-                          infoData.map((item, index: number) => {
-                            return (
-                              <div 
-                              className="flex items-center gap-x-4 mx-auto xl:mx-0"
-                              key={index}>
-                                <div className="text-primary">{item.icon}</div>
-                                <div>{item.text}</div>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
+                      <div className="flex flex-col md:flex-row">
+                        {/* icons */}
+                        <div className="grid xl:grid-cols-2 gap-4 mb-4">
+                          {
+                            infoData.map((item, index: number) => {
+                              return (
+                                <div 
+                                className="flex items-center gap-x-4 mx-auto xl:mx-0"
+                                key={index}>
+                                  <div className="text-primary">{item.icon}</div>
+                                  <div>{item.text}</div>
+                                </div>
+                              )
+                            })
+                          }
+                        </div>
 
-                      {/* language skills */}
-                      <div className="flex flex-col gap-y-1">
-                        <div className="text-primary">Language Skills</div>
-                        <div className="border-b border-border"></div>
-                        <div className="">English, French, Spanish, Italian</div>
+                        {/* language skills */}
+                        <div className="flex flex-col gap-y-1">
+                          <div className="text-primary">Language Skills</div>
+                          <div className="border-b border-border"></div>
+                          <div className="">English, French, Spanish, Italian</div>
+                        </div>
                       </div>
 
                     </div>
@@ -257,48 +256,56 @@ const About = () => {
                           </div>
                         </div>
                         
-                        {/* education */}
-                        <div className="flex flex-col gap-y-6">
-                          <div className="flex gap-x-2 items-center text-[20px] text-primary">
-                            <GraduationCap size={22} />
-                            <h4 className="capitalize font-medium">
-                              {
-                                findData(qualificationsData, 'education').title
-                              }
-                            </h4>
-                          </div>
 
-                          {/* list */}
-                          <div>
-                            {
-                              findData(qualificationsData, 'education').data.map((item: any , index: number) => {
-                                return (
-                                  <div 
-                                    key={index}
-                                    className="flex p-2 gap-x-4 group bg-blue-600"
-                                  >
-
-                                    <div className="h-[84px] w-[2px] bg-border relative ml-2">
-                                      <div className="w-[11px] h-[11px] rounded-full bg-primary absolute -left-[5px] group-hover:translate-y-[42px] transition-all duration-700"></div>
-                                    </div>
-
-                                      <div className="font-semibold text-sm leading-none mb-2">{item.university}</div>
-                                      <div className="text-sm leading-none text-muted-foreground mb-4">{item.certification}</div>
-                                      <div className="text-sm font-medium">{item.year}</div>
-                                  </div>
-                                      );
-                                  }
-                              )
-                              }
-                          </div>
-                        </div>
                     </div>
                   </div>
                   </TabsContent>
                   <TabsContent value="skills">
                   <div className="text-center md:text-left">
                       <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
-                      <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
+                      <div className="border-b border-border mb-4"></div>
+
+                      {/* skills list */}
+                      <div className="mb-8">
+                        <h4 className="font-bold xl:text-left mb-2">Skills</h4>
+                        {
+                          findData(skillsData, 'skills').data.map((item: any, index: number) => {
+                            return (
+                              <div
+                                className="w-2/4 text-center xl:text-left mx-auto xl:mx-0"
+                                key={index}
+                              >
+                                <div>{item.name}</div>
+                              </div>
+                            )
+                          })
+                        }
+                      </div>
+
+                      {/* tools */}
+                      <div>
+                        <h4 className="font-bold xl:text-left mb-2">Tools</h4>
+                        <div className="border-b border-border mb-4"></div>
+
+                        {/* tools list */}
+                        <div className="flex gap-x-8 justify-center xl:justify-start">
+                          {
+                            findData(skillsData, 'tools').data.map((item: any, index: number) => {
+                              return (
+                                <div key={index}>
+                                  <Image 
+                                    src={item.image}
+                                    width={40}
+                                    height={40}
+                                    alt=''
+                                    priority
+                                  />
+                                </div>
+                              )
+                            })
+                          }
+                        </div>
+                      </div>
                     </div>
                   </TabsContent>
                 </div>
