@@ -41,7 +41,6 @@ const infoData = [
       icon: <HomeIcon size={20} />,
       text: '344 Left Avn.'
     }
-    
 ];
 
 // data 2
@@ -123,196 +122,243 @@ const skillsData = [
   },
 ];
 
-
 interface QualificationsDataInterface {
-  title?: string,
+  title?: string;
   data?: {
-    university: string;
-    certification: string;
+    university?: string;
+    certification?: string;
+    company?: string;
+    role?: string;
     year: string;
-    }[] | {
-    company: string;
-    qualification: string;
-    year: string;
-    }[];
-  find?: any
+  }[];
+  find?: any;
 }
 
-
-interface QualificationsItemInterface {
-  company: string, 
-  role: string, 
-  year: string
-} 
-
+interface SkillsDataInterface {
+  title?: string;
+  data?: {
+    name?: string;
+    image?: string;
+  }[];
+}
 
 const About = () => {
 
-  const findData = (arr: QualificationsDataInterface, title: string): { title: string, data: Array<Object>} => {
-    return arr.find((item: QualificationsDataInterface) => item.title === title);
+  const findData = <T extends { title?: string }>(arr: T[], title: string): T | undefined => {
+    return arr.find((item: T) => item.title === title);
   };
 
-
-
   return (
-    <section className="md:h-[960px] pb-12 md:py-4 mt-36">
-      <div className="container">
-        <h2 className="section-title mt-16 md:mt-24 mb-8 md:mb-16 text-center mx-auto">About Me</h2>
-          <div className="flex flex-col items-center justify-center md:flex-row md:items-start lg:justify-between">
-
-            {/* image */}
-            <div className="hidden md:flex relative">
+    <section className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 mt-16 sm:mt-24 lg:mt-36">
+      <div className="container mx-auto max-w-7xl">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12 lg:mb-16">
+          About Me
+        </h2>
+        
+        <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8 lg:gap-12">
+          
+          {/* Image - Hidden on mobile, visible on medium screens and up */}
+          <div className="hidden md:flex justify-center xl:justify-start flex-shrink-0 w-full xl:w-auto mb-6 xl:mb-0">
+            <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[360px] lg:h-[360px] xl:w-[400px] xl:h-[400px] flex items-center justify-center overflow-hidden">
               <MainIMG
-                containerStyles='bg-about_shape_light dark:bg-about_shape_dark w-[400px] h-[400px] scale-[75%] lg:scale-[75%] bg-no-repeat relative' 
+                containerStyles='bg-about_shape_light dark:bg-about_shape_dark w-full h-full bg-no-repeat bg-center bg-contain relative' 
                 imgSrc='/about/developer.png'
               />
             </div>
+          </div>
 
-            {/* tabs */}
-            <div className="flex">
-              <Tabs defaultValue="personal">
-                <TabsList className="grid lg:grid-cols-3 xl:max-w-[480px] xl:border dark:border-none">
-                  <TabsTrigger className="w-[162px]" value="personal">Info</TabsTrigger>
-                  <TabsTrigger className="w-[162px]" value="qualifications">Qualifications</TabsTrigger>
-                  <TabsTrigger className="w-[162px]" value="skills">Skills</TabsTrigger>
-                </TabsList>
+          {/* Tabs */}
+          <div className="flex-1 max-w-none xl:max-w-2xl">
+            <Tabs defaultValue="personal" className="w-full">
+              <TabsList className="grid grid-cols-3 w-full max-w-md mx-auto xl:mx-0 xl:max-w-[480px] border dark:border-none">
+                <TabsTrigger className="text-xs sm:text-sm px-2 sm:px-4" value="personal">
+                  Info
+                </TabsTrigger>
+                <TabsTrigger className="text-xs sm:text-sm px-2 sm:px-4" value="qualifications">
+                  Qualifications
+                </TabsTrigger>
+                <TabsTrigger className="text-xs sm:text-sm px-2 sm:px-4" value="skills">
+                  Skills
+                </TabsTrigger>
+              </TabsList>
 
-                {/* tabs content */}
-                <div className="text-lg mt-12 md:mt-12">
+              {/* Tabs content */}
+              <div className="mt-8 sm:mt-12">
                 
-                  {/* personal tab content */}
-                  <TabsContent value="personal">
-                    <div className="text-center md:text-left">
-                      <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
-                      <p className="subtext max-w-xl mx-auto xl:mx-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.</p>
+                {/* Personal tab content */}
+                <TabsContent value="personal" className="space-y-6">
+                  <div className="text-center xl:text-left">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">
+                      Over 2 years of full stack web development
+                    </h3>
+                    <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto xl:mx-0 mb-6">
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet maiores obcaecati eligendi. Eveniet maiores obcaecati eligendi.
+                    </p>
 
-                      <div className="flex flex-col md:flex-row">
-                        {/* icons */}
-                        <div className="grid xl:grid-cols-2 gap-4 mb-4">
-                          {
-                            infoData.map((item, index: number) => {
-                              return (
-                                <div 
-                                className="flex items-center gap-x-4 mx-auto xl:mx-0"
-                                key={index}>
-                                  <div className="text-primary">{item.icon}</div>
-                                  <div>{item.text}</div>
-                                </div>
-                              )
-                            })
-                          }
-                        </div>
-
-                        {/* language skills */}
-                        <div className="flex flex-col gap-y-1">
-                          <div className="text-primary">Language Skills</div>
-                          <div className="border-b border-border"></div>
-                          <div className="">English, French, Spanish, Italian</div>
-                        </div>
+                    <div className="flex flex-col xl:flex-row gap-6 lg:gap-8">
+                      {/* Icons */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
+                        {infoData.map((item, index: number) => (
+                          <div 
+                            className="flex items-center gap-x-3 justify-center xl:justify-start"
+                            key={index}
+                          >
+                            <div className="text-primary flex-shrink-0">{item.icon}</div>
+                            <div className="text-sm sm:text-base truncate">{item.text}</div>
+                          </div>
+                        ))}
                       </div>
 
-                    </div>
-                  </TabsContent>
-
-                  {/* qualifications tab content */}
-                  <TabsContent value="qualifications">
-                  <div className="">
-                    <h3 className="h3 mt-0 mb-3 text-center md:text-left">My Qualifications</h3>
-                      <div className="grid lg:grid-cols-2 gap-y-8">
-
-                        {/* experience */}
-                        <div className="flex flex-col gap-y-6">
-                          <div className="flex gap-x-2 items-center text-[20px] text-primary">
-                            <Briefcase size={22} />
-                            <h4 className="capitalize font-medium">
-                              {
-                                findData(qualificationsData, 'experience').title
-                              }
-                            </h4>
-                          </div>
-
-                          {/* list */}
-                          <div>
-                            {
-                              findData(qualificationsData, 'experience').data.map((item: any , index: number) => {
-                                return (
-                                  <div 
-                                    key={index}
-                                    className="flex p-2 gap-x-4 group bg-blue-600"
-                                  >
-
-                                    <div className="h-[84px] w-[2px] bg-border relative ml-2">
-                                      <div className="w-[11px] h-[11px] rounded-full bg-primary absolute -left-[5px] bottom-0 group-hover:-translate-y-[42px] transition-all duration-700"></div>
-                                    </div>
-
-                                      <div className="font-semibold text-sm leading-none mb-2">{item.company}</div>
-                                      <div className="text-sm leading-none text-muted-foreground mb-4">{item.role}</div>
-                                      <div className="text-sm font-medium">{item.year}</div>
-                                  </div>
-                                      );
-                                  }
-                              )
-                              }
-                          </div>
+                      {/* Language skills */}
+                      <div className="flex flex-col gap-y-2 flex-shrink-0">
+                        <div className="text-primary font-semibold text-center xl:text-left">
+                          Language Skills
                         </div>
-                        
-
+                        <div className="border-b border-border"></div>
+                        <div className="text-sm sm:text-base text-center xl:text-left">
+                          English, French, Spanish, Italian
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  </TabsContent>
-                  <TabsContent value="skills">
-                  <div className="text-center md:text-left">
-                      <h3 className="h3 mb-4">Over 2 years of full stack web development</h3>
-                      <div className="border-b border-border mb-4"></div>
+                </TabsContent>
 
-                      {/* skills list */}
-                      <div className="mb-8">
-                        <h4 className="font-bold xl:text-left mb-2">Skills</h4>
-                        {
-                          findData(skillsData, 'skills').data.map((item: any, index: number) => {
-                            return (
-                              <div
-                                className="w-2/4 text-center xl:text-left mx-auto xl:mx-0"
-                                key={index}
-                              >
-                                <div>{item.name}</div>
+                {/* Qualifications tab content */}
+                <TabsContent value="qualifications" className="space-y-6">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 text-center lg:text-left">
+                      My Qualifications
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                      {/* Experience */}
+                      <div className="space-y-6">
+                        <div className="flex gap-x-2 items-center text-lg sm:text-xl text-primary justify-center lg:justify-start">
+                          <Briefcase size={22} />
+                          <h4 className="capitalize font-medium">
+                            {findData(qualificationsData, 'experience')?.title}
+                          </h4>
+                        </div>
+
+                        {/* Experience list */}
+                        <div className="space-y-4">
+                          {findData(qualificationsData, 'experience')?.data?.map((item: any, index: number) => (
+                            <div 
+                              key={index}
+                              className="flex gap-x-4 group p-4 rounded-lg border hover:bg-muted/50 transition-colors"
+                            >
+                              <div className="h-[60px] sm:h-[84px] w-[2px] bg-border relative flex-shrink-0">
+                                <div className="w-[11px] h-[11px] rounded-full bg-primary absolute -left-[5px] top-0 group-hover:translate-y-[30px] sm:group-hover:translate-y-[42px] transition-all duration-700"></div>
                               </div>
-                            )
-                          })
-                        }
+
+                              <div className="flex-1 min-w-0">
+                                <div className="font-semibold text-sm sm:text-base leading-tight mb-2 truncate">
+                                  {item.company}
+                                </div>
+                                <div className="text-xs sm:text-sm leading-tight text-muted-foreground mb-3">
+                                  {item.role}
+                                </div>
+                                <div className="text-xs sm:text-sm font-medium text-primary">
+                                  {item.year}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
-                      {/* tools */}
-                      <div>
-                        <h4 className="font-bold xl:text-left mb-2">Tools</h4>
-                        <div className="border-b border-border mb-4"></div>
+                      {/* Education */}
+                      <div className="space-y-6">
+                        <div className="flex gap-x-2 items-center text-lg sm:text-xl text-primary justify-center lg:justify-start">
+                          <GraduationCap size={22} />
+                          <h4 className="capitalize font-medium">
+                            {findData(qualificationsData, 'education')?.title}
+                          </h4>
+                        </div>
 
-                        {/* tools list */}
-                        <div className="flex gap-x-8 justify-center xl:justify-start">
-                          {
-                            findData(skillsData, 'tools').data.map((item: any, index: number) => {
-                              return (
-                                <div key={index}>
-                                  <Image 
-                                    src={item.image}
-                                    width={40}
-                                    height={40}
-                                    alt=''
-                                    priority
-                                  />
+                        {/* Education list */}
+                        <div className="space-y-4">
+                          {findData(qualificationsData, 'education')?.data?.map((item: any, index: number) => (
+                            <div 
+                              key={index}
+                              className="flex gap-x-4 group p-4 rounded-lg border hover:bg-muted/50 transition-colors"
+                            >
+                              <div className="h-[60px] sm:h-[84px] w-[2px] bg-border relative flex-shrink-0">
+                                <div className="w-[11px] h-[11px] rounded-full bg-primary absolute -left-[5px] top-0 group-hover:translate-y-[30px] sm:group-hover:translate-y-[42px] transition-all duration-700"></div>
+                              </div>
+
+                              <div className="flex-1 min-w-0">
+                                <div className="font-semibold text-sm sm:text-base leading-tight mb-2 truncate">
+                                  {item.university}
                                 </div>
-                              )
-                            })
-                          }
+                                <div className="text-xs sm:text-sm leading-tight text-muted-foreground mb-3">
+                                  {item.certification}
+                                </div>
+                                <div className="text-xs sm:text-sm font-medium text-primary">
+                                  {item.year}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  </TabsContent>
-                </div>
-              </Tabs>
-            </div>
+                  </div>
+                </TabsContent>
 
+                {/* Skills tab content */}
+                <TabsContent value="skills" className="space-y-6">
+                  <div className="text-center lg:text-left">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">
+                      Over 2 years of full stack web development
+                    </h3>
+                    <div className="border-b border-border mb-6"></div>
+
+                    {/* Skills list */}
+                    <div className="mb-8 space-y-4">
+                      <h4 className="font-bold text-lg">Skills</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {findData(skillsData, 'skills')?.data?.map((item: any, index: number) => (
+                          <div
+                            className="p-3 bg-muted/50 rounded-lg text-center lg:text-left"
+                            key={index}
+                          >
+                            <div className="text-sm sm:text-base font-medium">{item.name}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Tools */}
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-lg">Tools</h4>
+                      <div className="border-b border-border mb-4"></div>
+
+                      {/* Tools list */}
+                      <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
+                        {findData(skillsData, 'tools')?.data?.map((item: any, index: number) => (
+                          <div 
+                            key={index}
+                            className="p-3 bg-muted/50 rounded-lg hover:bg-muted transition-colors"
+                          >
+                            <Image 
+                              src={item.image}
+                              width={32}
+                              height={32}
+                              alt='Tool icon'
+                              priority
+                              className="w-8 h-8 sm:w-10 sm:h-10"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+              </div>
+            </Tabs>
           </div>
+        </div>
       </div>
     </section>
   )
