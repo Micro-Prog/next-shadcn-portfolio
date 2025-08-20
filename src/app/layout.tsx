@@ -3,11 +3,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 
 // Components
-import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Footer';
+import Header from '@/components/maincomponents/header/Header';
+import Footer from '@/components/maincomponents/footer/Footer';
 
 // Next Theme Provider
-import  { NextThemeProvider } from '@/components/theme/ThemeProvider';
+import  { NextThemeProvider } from '@/components/minorcomponents/theme/ThemeProvider';
 
 
 

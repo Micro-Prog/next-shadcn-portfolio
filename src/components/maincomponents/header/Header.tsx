@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from "react";
 
 // theme toggler icon
-import ThemeToggler from "../theme_toggler/ThemeToggler";
+import ThemeToggler from "@/components/minorcomponents/theme_toggler/ThemeToggler";
 
 // logo
-import Logo from "../logo/Logo";
+import Logo from "../../minorcomponents/logo/Logo";
 
 // navbar
 import Navbar from "../navbar/Navbar";

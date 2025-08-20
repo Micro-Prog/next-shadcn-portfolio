@@ -3,14 +3,14 @@ import { AlignJustify } from 'lucide-react';
 
 
 // import shadcn sheet
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 // navbar
 import Navbar from '../navbar/Navbar';
 // logo
-import Logo from '../logo/Logo';
+import Logo from '../../minorcomponents/logo/Logo';
 // social media
-import SocialMedia from '../social_media/SocialMedia';
+import SocialMedia from  '../../minorcomponents/social_media/SocialMedia';
 
 
 const MobileNavbar = () => {

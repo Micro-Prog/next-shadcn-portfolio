@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { Download, Send } from 'lucide-react';
 
 import {
@@ -10,13 +10,13 @@ import {
 } from 'react-icons/ri';
 
 // hero developer IMG
-import HeroIMG from '../main_img/MainIMG';
+import HeroIMG from '@/components/minorcomponents/main_img/MainIMG';
 
 // badge
-import Badge from '../badge/Badge';
+import Badge from '@/components/minorcomponents/badge/Badge';
 
 // socials
-import SocialMedia from '../social_media/SocialMedia';
+import SocialMedia from '@/components/minorcomponents/social_media/SocialMedia';
 import Link from 'next/link';
 
 

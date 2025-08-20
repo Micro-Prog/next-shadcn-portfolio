@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 
-import MainIMG from '../main_img/MainIMG';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import MainIMG from '@/components/minorcomponents/main_img/MainIMG';
+import { Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs';
 
 //icons
 import {
